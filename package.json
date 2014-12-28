@@ -1,0 +1,26 @@
+{
+  "name": "grbitcoin",
+  "version": "0.0.1",
+  "description": "A globally recognized bitcoin",
+  "main": "app.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0dayZh/grbitcoin.git"
+  },
+  "dependencies": {
+    "koa": "0.14.0",
+    "koa-router": "^3.8.0"
+  },
+  "keywords": [
+    "bitcoin"
+  ],
+  "author": "0dayZh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0dayZh/grbitcoin/issues"
+  },
+  "homepage": "https://github.com/0dayZh/grbitcoin"
+}
