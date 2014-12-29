@@ -1,4 +1,5 @@
-var router = require('koa-router');
+var router = require('koa-router')
+  , mount = require('koa-mount');
 
 module.exports = function(app) {
   // mount middleware
