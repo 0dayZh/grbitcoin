@@ -1,27 +1,20 @@
 var Router = require('koa-router')
-  , mount = require('koa-mount');
+  , mount = require('koa-mount')
+  , api_v1 = require('../controllers/api_v1.js')
+  , web = require('../controllers/web.js');
 
 module.exports = function(app) {
   // api
-  var APIv1 = new Router();
+  var api_v1Router = new Router();
 
-  APIv1.get('/bitcoin', function *(next) {
-    this.body = "GET bitcoin done.";
-  });
+  api_v1Router
+    .get('/bitcoin/:email_hash', api_v1.getBitcoinAddress);
 
   // web
-  var web = new Router();
+  var webRouter = new Router();
 
-  web
-    .get('/', function *(next) {
-      this.body = "GET root path done.";
-    })
-    .get('/about', function *(next) {
-      this.body = "GET about me done.";
-    })
-    .get('/sendmail', function *(next) {
-      
-    });
+  webRouter
+    .get('/', web.root);
 
   // mount middleware
   app.use(mount('/v1', APIv1.middleware()))
