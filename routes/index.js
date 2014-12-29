@@ -1,4 +1,4 @@
-var router = require('koa-router')
+var Router = require('koa-router')
   , mount = require('koa-mount');
 
 module.exports = function(app) {
@@ -17,6 +17,6 @@ module.exports = function(app) {
   });
 
   // mount middleware
-  app.use(mount('/v1', APIv1.middleware()));
+  app.use(mount('/v1', APIv1.middleware()))
      .use(mount('/', web.middleware()));
 }

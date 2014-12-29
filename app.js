@@ -2,9 +2,7 @@ var koa = require('koa')
   , route = require('./routes/')
   , app = koa();
 
-// mount the middleware
-app.use(router(app));
-
+// mount routes
 route(app);
 
 app.listen(3000);
