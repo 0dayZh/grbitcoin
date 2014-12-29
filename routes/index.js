@@ -17,6 +17,6 @@ module.exports = function(app) {
     .get('/', web.root);
 
   // mount middleware
-  app.use(mount('/v1', APIv1.middleware()))
-     .use(mount('/', web.middleware()));
+  app.use(mount('/v1', api_v1Router.middleware()))
+     .use(mount('/', webRouter.middleware()));
 }
