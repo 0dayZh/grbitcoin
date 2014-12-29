@@ -12,9 +12,16 @@ module.exports = function(app) {
   // web
   var web = new Router();
 
-  web.get('/', function *(next) {
-    this.body = "GET root path done.";
-  });
+  web
+    .get('/', function *(next) {
+      this.body = "GET root path done.";
+    })
+    .get('/about', function *(next) {
+      this.body = "GET about me done.";
+    })
+    .get('/sendmail', function *(next) {
+      
+    });
 
   // mount middleware
   app.use(mount('/v1', APIv1.middleware()))
