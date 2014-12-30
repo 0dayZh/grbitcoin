@@ -7,6 +7,7 @@ var koa = require('koa');
 var routes = require('./routes/');
 var middlewares = require('koa-middlewares');
 var render = middlewares.ejs;
+var staticServer = require('koa-static');
 var config = require('./config');
 var path = require('path');
 var http = require('http');
@@ -21,10 +22,7 @@ app.use(middlewares.favicon());
 /**
  * static file server
  */
-app.use(middlewares.staticCache(path.join(__dirname, 'public/images'), {
-  buffer: !config.debug,
-  maxAge: config.debug ? 0 : 60 * 60 * 24 * 7
-}));
+app.use(staticServer(path.join(__dirname, '/public')));
 app.use(middlewares.bodyParser());
 
 if (config.debug && process.env.NODE_ENV !== 'test') {
