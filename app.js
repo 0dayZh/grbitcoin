@@ -34,7 +34,7 @@ if (config.debug && process.env.NODE_ENV !== 'test') {
  * render
  */
 render(app, {
-  root: path.join(__dirname, 'views');
+  root: path.join(__dirname, 'views'),
   layout: 'template',
   viewExt: 'ejs',
   cache: false,

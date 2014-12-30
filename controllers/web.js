@@ -1,5 +1,5 @@
 var UtilEmail = require('../util-email.js');
 
-exports.root = function *(next) {
-  this.body = "GET root.";
+exports.index = function *(next) {
+  yield this.render('index', {});
 }

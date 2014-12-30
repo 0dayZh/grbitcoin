@@ -18,7 +18,7 @@ module.exports = function(app) {
   var webRouter = new Router();
 
   webRouter
-    .get('/', web.root);
+    .get('/', web.index);
 
   // mount middleware
   app.use(mount('/v1', api_v1Router.middleware()))
