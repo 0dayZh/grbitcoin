@@ -6,6 +6,7 @@
 var koa = require('koa');
 var routes = require('./routes/');
 var middlewares = require('koa-middlewares');
+var render = middlewares.ejs;
 var config = require('./config');
 var path = require('path');
 var http = require('http');
@@ -28,6 +29,17 @@ app.use(middlewares.bodyParser());
 if (config.debug && process.env.NODE_ENV !== 'test') {
   app.use(middlewares.logger());
 }
+
+/**
+ * render
+ */
+render(app, {
+  root: path.join(__dirname, 'views');
+  layout: 'template',
+  viewExt: 'ejs',
+  cache: false,
+  debug: config.debug
+});
 
 /**
  * router
