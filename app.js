@@ -8,6 +8,7 @@ var routes = require('./routes/');
 var middlewares = require('koa-middlewares');
 var render = require('koa-ejs');
 var logger = require('koa-logger');
+var favicon = require('koa-favicon');
 var staticServer = require('koa-static');
 var config = require('./config');
 var path = require('path');
@@ -18,7 +19,7 @@ var app = koa();
 /**
  * ignore favicon
  */
-app.use(middlewares.favicon());
+app.use(favicon());
 
 /**
  * static file server
