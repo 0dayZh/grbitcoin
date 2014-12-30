@@ -5,7 +5,6 @@
  */
 var koa = require('koa');
 var routes = require('./routes/');
-var middlewares = require('koa-middlewares');
 var render = require('koa-ejs');
 var logger = require('koa-logger');
 var favicon = require('koa-favicon');
@@ -25,7 +24,6 @@ app.use(favicon());
  * static file server
  */
 app.use(staticServer(path.join(__dirname, '/public')));
-app.use(middlewares.bodyParser());
 
 if (config.debug && process.env.NODE_ENV !== 'test') {
   app.use(logger());
