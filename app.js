@@ -7,6 +7,7 @@ var koa = require('koa');
 var routes = require('./routes/');
 var middlewares = require('koa-middlewares');
 var render = require('koa-ejs');
+var logger = require('koa-logger');
 var staticServer = require('koa-static');
 var config = require('./config');
 var path = require('path');
@@ -26,7 +27,7 @@ app.use(staticServer(path.join(__dirname, '/public')));
 app.use(middlewares.bodyParser());
 
 if (config.debug && process.env.NODE_ENV !== 'test') {
-  app.use(middlewares.logger());
+  app.use(logger());
 }
 
 /**
@@ -43,7 +44,6 @@ render(app, {
 /**
  * router
  */
-app.use(middlewares.router(app));
 routes(app);
 
 app = module.exports = http.createServer(app.callback());
