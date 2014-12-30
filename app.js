@@ -1,6 +1,7 @@
-var koa = require('koa')
-  , route = require('./routes/')
-  , app = koa();
+var koa = require('koa');
+var route = require('./routes/');
+var middlewaires = require('koa-middlewares');
+var app = koa();
 
 // mount routes
 route(app);
