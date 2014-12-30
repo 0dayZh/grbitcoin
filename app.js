@@ -11,6 +11,11 @@ var config = require('config')
 var app = koa();
 
 /**
+ * ignore favicon
+ */
+app.use(middlewares.favicon());
+
+/**
  * static file server
  */
 app.use(middlewares.staticCache(path.join(__dirname, 'public'), {
