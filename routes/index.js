@@ -1,13 +1,11 @@
 'use strict';
 
-var middlewares = require('koa-middlewares');
+var Router = require('koa-router');
 var mount = require('koa-mount');
 var api_v1 = require('../controllers/api_v1');
 var web = require('../controllers/web');
 
 module.exports = function(app) {
-  var Router = middlewares.router;
-
   // api
   var api_v1Router = new Router();
 
