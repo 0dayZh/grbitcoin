@@ -3,7 +3,6 @@
 /**
  * Module dependencies.
  */
-
 var koa = require('koa');
 var routes = require('./routes/');
 var middlewares = require('koa-middlewares');
