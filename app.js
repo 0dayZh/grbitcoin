@@ -12,7 +12,7 @@ var staticServer = require('koa-static');
 var config = require('./config');
 var path = require('path');
 var http = require('http');
-var bodyParser = require('koa-body-parser');
+var bodyParser = require('koa-bodyparser');
 
 var app = koa();
 

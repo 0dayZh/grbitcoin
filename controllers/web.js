@@ -1,3 +1,8 @@
+'use strict';
+
+/**
+ * Module dependencies.
+ */
 var UtilEmail = require('../util-email.js');
 
 exports.index = function *(next) {
@@ -5,6 +10,6 @@ exports.index = function *(next) {
 }
 
 exports.sendEmailIfNeeded = function *(next) {
-  var email = this.request.body;
+  var email = this.params.email;
   console.log("Email: " + email);
 }
