@@ -12,6 +12,7 @@ var staticServer = require('koa-static');
 var config = require('./config');
 var path = require('path');
 var http = require('http');
+var bodyParser = require('koa-body-parser');
 
 var app = koa();
 
@@ -25,9 +26,17 @@ app.use(favicon());
  */
 app.use(staticServer(path.join(__dirname, '/public')));
 
+/**
+ * logger
+ */
 if (config.debug && process.env.NODE_ENV !== 'test') {
   app.use(logger());
 }
+
+/**
+ * body parser
+ */
+app.use(bodyParser());
 
 /**
  * render
