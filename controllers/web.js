@@ -10,6 +10,7 @@ exports.index = function *(next) {
 }
 
 exports.sendEmailIfNeeded = function *(next) {
-  var email = this.params.email;
+  var email = this.request.body.email;
   console.log("Email: " + email);
+  this.body = email;
 }
