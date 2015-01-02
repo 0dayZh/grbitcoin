@@ -9,6 +9,7 @@ var render = require('koa-ejs');
 var logger = require('koa-logger');
 var favicon = require('koa-favicon');
 var staticServer = require('koa-static');
+var validate = require('koa-validate');
 var config = require('./config');
 var path = require('path');
 var http = require('http');
@@ -32,6 +33,11 @@ app.use(staticServer(path.join(__dirname, '/public')));
 if (config.debug && process.env.NODE_ENV !== 'test') {
   app.use(logger());
 }
+
+/**
+ * validate
+ */
+app.use(validate());
 
 /**
  * body parser
