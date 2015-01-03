@@ -10,7 +10,10 @@ exports.index = function *(next) {
 }
 
 exports.sendEmailIfNeeded = function *(next) {
-  var email = this.request.body.email;
-  console.log("Email: " + email);
-  this.body = email;
+  if (this.checkBody('email').isEmail("Bad email."));
+  if (this.errors) {
+    console.log(this.errors);
+  } else {
+    this.redirect('/');
+  }
 }
