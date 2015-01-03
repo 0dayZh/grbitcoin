@@ -21,7 +21,7 @@ exports.sendEmailIfNeeded = function *(next) {
 
     this.redirect('/');
 
-    var html_body = fs.readFileSync(path.join(__dirname, '../views/email-templates/bind-premailer.html'), 'utf8');
+    var html_body = fs.readFileSync(path.join(__dirname, '../views/email-templates/confirm-premailer.html'), 'utf8');
     UtilEmail.sendEmail(email, 'Confirm your email to get early access', html_body);
   }
 }
