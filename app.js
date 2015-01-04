@@ -14,8 +14,14 @@ var config = require('./config');
 var path = require('path');
 var http = require('http');
 var bodyParser = require('koa-bodyparser');
+var mongoose = require('mongoose');
 
 var app = koa();
+
+/**
+ * connect to mongodb
+ */
+mongoose.connect('mongodb://localhost/grbitcoin_db');
 
 /**
  * ignore favicon
