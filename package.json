@@ -20,7 +20,8 @@
     "koa-router": "^3.8.0",
     "koa-static": "^1.4.8",
     "koa-validate": "^0.2.5",
-    "mailgun-js": "^0.6.7"
+    "mailgun-js": "^0.6.7",
+    "mongoose": "^3.8.21"
   },
   "keywords": [
     "bitcoin"
