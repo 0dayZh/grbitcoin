@@ -6,6 +6,8 @@
 var UtilEmail = require('../util-email.js');
 var path = require('path');
 var fs = require('fs');
+var mongoose = require('mongoose');
+var Token = mongoose.model('Token');
 
 exports.index = function *(next) {
   yield this.render('index', {});
@@ -18,6 +20,7 @@ exports.sendEmailIfNeeded = function *(next) {
     this.redirect('/');
   } else {
     var email = this.request.body.email;
+    // todo @0dayZh, create new Token
 
     this.redirect('/');
 

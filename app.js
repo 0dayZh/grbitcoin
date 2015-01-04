@@ -3,25 +3,39 @@
 /**
  * Module dependencies.
  */
-var koa = require('koa');
-var routes = require('./routes/');
-var render = require('koa-ejs');
-var logger = require('koa-logger');
+var bodyParser = require('koa-bodyparser');
+var config = require('./config');
 var favicon = require('koa-favicon');
+var fs = require('fs');
+var http = require('http');
+var koa = require('koa');
+var logger = require('koa-logger');
+var mongoose = require('mongoose');
+var path = require('path');
+var render = require('koa-ejs');
+var routes = require('./routes/');
 var staticServer = require('koa-static');
 var validate = require('koa-validate');
-var config = require('./config');
-var path = require('path');
-var http = require('http');
-var bodyParser = require('koa-bodyparser');
-var mongoose = require('mongoose');
 
 var app = koa();
 
 /**
  * connect to mongodb
  */
-mongoose.connect('mongodb://localhost/grbitcoin_db');
+// Connect to mongodb
+var connect = function () {
+  var options = { server: { socketOptions: { keepAlive: 1 } } };
+  mongoose.connect('mongodb://localhost/grbitcoin_db', options);
+};
+connect();
+
+mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
+mongoose.connection.on('disconnected', connect);
+
+// Bootstrap models
+fs.readdirSync(__dirname + '/models').forEach(function (file) {
+  if (~file.indexOf('.js')) require(__dirname + '/models/' + file);
+});
 
 /**
  * ignore favicon
