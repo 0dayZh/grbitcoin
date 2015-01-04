@@ -13,7 +13,6 @@ var logger = require('koa-logger');
 var mongoose = require('mongoose');
 var path = require('path');
 var render = require('koa-ejs');
-var routes = require('./routes/');
 var staticServer = require('koa-static');
 var validate = require('koa-validate');
 
@@ -78,6 +77,7 @@ render(app, {
 /**
  * router
  */
+var routes = require('./routes/');
 routes(app);
 
 app = module.exports = http.createServer(app.callback());
