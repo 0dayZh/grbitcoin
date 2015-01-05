@@ -68,8 +68,8 @@ app.use(bodyParser());
  */
 render(app, {
   root: path.join(__dirname, 'views'),
-  layout: 'template',
-  viewExt: 'ejs',
+  layout: false,
+  viewExt: 'html',
   cache: false,
   debug: config.debug
 });
