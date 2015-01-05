@@ -18,7 +18,9 @@ module.exports = function(app) {
 
   webRouter
     .get('/', web.index)
-    .post('/sendEmail', web.sendEmailIfNeeded);
+    .post('/sendEmail', web.sendEmailIfNeeded),
+    .get('/bind/:token_string', web.bind),
+    .get('/unbind/:token_string', web.bind);
 
   // mount middleware
   app.use(mount('/v1', api_v1Router.middleware()))

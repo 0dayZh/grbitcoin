@@ -15,6 +15,14 @@ exports.index = function *(next) {
   yield this.render('index', {});
 }
 
+exports.bindEmail = function *(next) {
+
+}
+
+exports.unbindEmail = function *(next) {
+
+}
+
 exports.sendEmailIfNeeded = function *(next) {
   if (this.checkBody('email').isEmail("Bad email."));
   if (this.errors) {
