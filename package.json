@@ -11,7 +11,6 @@
     "url": "https://github.com/0dayZh/grbitcoin.git"
   },
   "dependencies": {
-    "date-utils": "^1.2.16",
     "koa": "^0.14.0",
     "koa-bodyparser": "^1.3.0",
     "koa-ejs": "^1.1.3",
@@ -22,6 +21,7 @@
     "koa-static": "^1.4.8",
     "koa-validate": "^0.2.5",
     "mailgun-js": "^0.6.7",
+    "moment": "^2.8.4",
     "mongoose": "^3.8.21"
   },
   "keywords": [
