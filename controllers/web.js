@@ -7,6 +7,7 @@ var UtilEmail = require('../util-email.js');
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var moment = require('moment');
+var trunk = require('thunkify')
 
 var Token = mongoose.model('Token');
 var Connection = mongoose.model('Connection');
@@ -65,6 +66,7 @@ exports.sendEmailIfNeeded = function *(next) {
       var hash = crypto.createHash('md5').update(email).digest('hex');
       var newToken = new Token({ email: email, token_string: hash, expiration_date: now.add(1, 'day').toDate()});
       console.log(newToken.toJSON());
+      newToken.save = trunk(newToken.save);
       newToken = yield newToken.save();
       token = newToken;
     } else if (moment(token.expiration_date).diff(now) <= 0) {
@@ -73,12 +75,14 @@ exports.sendEmailIfNeeded = function *(next) {
       var hash = crypto.createHash('md5').update(email).digest('hex');
       token.token_string = hash;
       token.expiration_date = now.add(1, 'day').toDate();
+      token.save = trunk(token.save);
       token = yield token.save();
     } else {
       // email has been requested before
       console.log('Email ( ' + email + ' ) has been requested before, and the token is still available.');
     }
 
+    console.log('Fetching connection bind to: ' + email);
     // check if the email has binded to a bitcoin address.
     var query = Connection.where({ email: email });
     var connection = yield query.findOne().exec();
@@ -94,6 +98,7 @@ exports.sendEmailIfNeeded = function *(next) {
 
       UtilEmail.sendEmail(email, 'Request for your action', html_body);
     } else {
+      console.log('Email ( ' + email + ' ) has not binded.');
       var html_body = yield this.render('email-templates/bind-premailer', {
         writeResp: false,
         token_string: token.token_string});
