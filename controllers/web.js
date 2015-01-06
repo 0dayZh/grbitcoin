@@ -65,10 +65,9 @@ exports.sendEmailIfNeeded = function *(next) {
       console.log('Email ( ' + email + ' ) is a fresh incoming one.');
       var hash = crypto.createHash('md5').update(email).digest('hex');
       var newToken = new Token({ email: email, token_string: hash, expiration_date: now.add(1, 'day').toDate()});
-      console.log(newToken.toJSON());
       newToken.save = trunk(newToken.save);
       newToken = yield newToken.save();
-      token = newToken;
+      token = newToken[0];
     } else if (moment(token.expiration_date).diff(now) <= 0) {
       // token expirated
       console.log('Email ( ' + email + ' ) has been requested before, but the token has expirated.');
@@ -77,6 +76,7 @@ exports.sendEmailIfNeeded = function *(next) {
       token.expiration_date = now.add(1, 'day').toDate();
       token.save = trunk(token.save);
       token = yield token.save();
+      token = token[0];
     } else {
       // email has been requested before
       console.log('Email ( ' + email + ' ) has been requested before, and the token is still available.');

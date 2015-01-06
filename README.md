@@ -13,4 +13,4 @@
   - ACTION: email binded 告知，当 bind 时发现其实 token 已经 binded 时展示
   - NOTICE: token expired
   - NOTICE: token 无效
-  
+- 时间存成 UTC
