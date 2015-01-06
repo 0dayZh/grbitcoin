@@ -29,12 +29,14 @@ exports.bindEmail = function *(next) {
   if (token) {
     if (moment(token.expiration_date).diff(now) <= 0) {
       // token expirated
+      yield this.render('notice', { notice: 'Token expirated.' });
     } else {
       // token works
       yield this.render('bind', { email: token.email });
     }
   } else {
     // token is regenerated or token is not avaiable
+    yield this.render('notice', { notice: 'Make sure you open the link from the latest email.' });
   }
 }
 
