@@ -20,6 +20,7 @@ module.exports = function(app) {
     .get('/', web.index)
     .post('/sendEmail', web.sendEmailIfNeeded),
     .get('/bind/:token_string', web.bindEmail),
+    .post('/bind', web.bindBitcoinAddress),
     .get('/unbind/:token_string', web.unbindEmail),
     .get('/rebind/:token_string', web.rebindEmail);
 

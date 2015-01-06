@@ -1,0 +1,16 @@
+<!DOCTYPE>
+<html lang="en">
+<% include header.ejs %>
+<body>
+  <div class="container">
+    <section class="content">
+      <p>Bind bitcoin address to <%= email %></p>
+      <form action="/bind" method="post" accept-charset="utf-8">
+        <input id="bitcoin" type="text" name="bitcoin" placeholder="Enter your Bitcoin address to bind.">
+      </form>
+    </section>
+  </div>
+  <% include analytics-scripts.ejs %>
+</body>
+<% include footer.ejs %>
+</html>

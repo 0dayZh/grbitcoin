@@ -16,10 +16,28 @@ exports.index = function *(next) {
 }
 
 exports.rebindEmail = function *(next) {
-  
+
 }
 
 exports.bindEmail = function *(next) {
+  var token_string = this.params.token_string;
+  var query = Token.where({ token_string: token_string });
+  var token = yield query.findOne().exec();
+  var now = moment();
+
+  if (token) {
+    if (moment(token.expiration_date).diff(now) <= 0) {
+      // token expirated
+    } else {
+      // token works
+      yield this.render('bind', { email: token.email });
+    }
+  } else {
+    // token is regenerated or token is not avaiable
+  }
+}
+
+exports.bindBitcoinAddress = function *(next) {
 
 }
 
