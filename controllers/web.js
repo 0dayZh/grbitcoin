@@ -7,7 +7,8 @@ var UtilEmail = require('../util-email.js');
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var moment = require('moment');
-var trunk = require('thunkify')
+var trunk = require('thunkify');
+require('bitcoin-address');
 
 var Token = mongoose.model('Token');
 var Connection = mongoose.model('Connection');
@@ -41,7 +42,18 @@ exports.bindEmail = function *(next) {
 }
 
 exports.bindBitcoinAddress = function *(next) {
-
+  var bitcoin_address = this.request.body.bitcoin_address;
+  if (validate(bitcoin_address)) {
+    var query = Connection.where({ bitcoin_address: bitcoin_address });
+    var connection = yield query.findOne().exec();
+    if (connection) {
+      yield this.render('notice', 'The Bitcoin address has binded to another email. You can not bind it to more than one email, unless you unbind it first.');
+    } else {
+      // TODO should find a way to pass token in.
+    }
+  } else {
+    yield this.render('notice', 'The Bitcoin address is invalide.');
+  }
 }
 
 exports.unbindEmail = function *(next) {
