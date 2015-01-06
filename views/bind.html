@@ -7,10 +7,14 @@
       <p>Bind bitcoin address to <%= email %></p>
       <form action="/bind" method="post" accept-charset="utf-8">
         <input id="bitcoin_address" type="text" name="bitcoin_address" placeholder="Enter your Bitcoin address to bind.">
+        <input id="token_string" type="hidden" name="token_string"></input>
       </form>
     </section>
   </div>
+  <script>
+  <% include catchtoken-scripts.ejs %>
   <% include analytics-scripts.ejs %>
+  </script>
 </body>
 <% include footer.ejs %>
 </html>

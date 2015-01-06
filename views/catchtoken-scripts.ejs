@@ -1,0 +1,6 @@
+(function(w, d) {
+  var path = w.location.pathname;
+  path = path.split('/')[2];
+  var input = d.getElementById('token_string');
+  input.value = path;
+})(window, document);
