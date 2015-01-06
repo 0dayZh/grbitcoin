@@ -15,6 +15,10 @@ exports.index = function *(next) {
   yield this.render('index', {});
 }
 
+exports.rebindEmail = function *(next) {
+  
+}
+
 exports.bindEmail = function *(next) {
 
 }
