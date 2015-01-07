@@ -3,7 +3,6 @@
 
 ## TODO:
 
-- 错误处理
 - 缺失页面
   - 错误页面
   - 重做首页
@@ -14,3 +13,7 @@
   - NOTICE: token 无效
   - NOTICE: bind success
 - 时间存成 UTC
+
+# DONE:
+
+- √ 错误处理
