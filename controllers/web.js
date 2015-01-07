@@ -7,7 +7,7 @@ var UtilEmail = require('../util-email');
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var moment = require('moment');
-var trunk = require('thunkify');
+var thunk = require('thunkify');
 var bitcoinAddress = require('bitcoin-address');
 
 var Token = mongoose.model('Token');
@@ -43,18 +43,28 @@ exports.bindEmail = function *(next) {
 
 exports.bindBitcoinAddress = function *(next) {
   var bitcoin_address = this.request.body.bitcoin_address;
+  var token_string = this.request.body.token_string;
 
-  if (bitcoinAddress.validate(bitcoin_address)) {
+  if (bitcoinAddress.validate(bitcoin_address) && token_string) {
     var query = Connection.where({ bitcoin_address: bitcoin_address });
     var connection = yield query.findOne().exec();
+
     if (connection) {
       yield this.render('notice', { 'notice': 'The Bitcoin address has binded to another email. You can not bind it to more than one email, unless you unbind it first.' });
     } else {
       var token_string = this.request.body.token_string;
-      var bitcoin_address = this.request.body.bitcoin_address;
+      var query = Token.where({ token_string: token_string });
+      var token = yield query.findOne().exec();
 
-      console.log(token_string);
-      console.log(bitcoin_address);
+      if (token) {
+        var connection = new Connection({ email: token.email, bitcoin_address: bitcoin_address });
+        connection.save = thunk(connection.save);
+        connection = yield connection.save();
+        connection = connection[0];
+        yield this.render('notice', { 'notice': 'Binded.' });
+      } else {
+        yield this.render('notice', { 'notice': 'Make sure you open the url from email directly.' });
+      }
     }
   } else {
     yield this.render('notice', { 'notice': 'The Bitcoin address is invalide.' });
@@ -84,7 +94,7 @@ exports.sendEmailIfNeeded = function *(next) {
       console.log('Email ( ' + email + ' ) is a fresh incoming one.');
       var hash = crypto.createHash('md5').update(email).digest('hex');
       var newToken = new Token({ email: email, token_string: hash, expiration_date: now.add(1, 'day').toDate()});
-      newToken.save = trunk(newToken.save);
+      newToken.save = thunk(newToken.save);
       newToken = yield newToken.save();
       token = newToken[0];
     } else if (moment(token.expiration_date).diff(now) <= 0) {
@@ -93,7 +103,7 @@ exports.sendEmailIfNeeded = function *(next) {
       var hash = crypto.createHash('md5').update(email).digest('hex');
       token.token_string = hash;
       token.expiration_date = now.add(1, 'day').toDate();
-      token.save = trunk(token.save);
+      token.save = thunk(token.save);
       token = yield token.save();
       token = token[0];
     } else {
