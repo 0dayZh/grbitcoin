@@ -14,7 +14,11 @@ exports.getBitcoinAddress = function *(next) {
   var connection = yield query.findOne().exec();
 
   if (!connection) {
-    // TODO handle 404
+    var error = new Error();
+    error.status = 404;
+    error.message = 'Email is not binded';
+
+    this.throw(error);
   } else {
     this.body = connection.toJSON();
   }
@@ -27,7 +31,11 @@ exports.getEmail = function *(next) {
   var connection = yield query.findOne().exec();
 
   if (!connection) {
-    // TODO handle 404
+    var error = new Error();
+    error.status = 404;
+    error.message = 'Bitcoin address is not binded';
+
+    this.throw(error);
   } else {
     this.body = connection.toJSON();
   }

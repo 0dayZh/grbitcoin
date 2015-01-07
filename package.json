@@ -24,6 +24,7 @@
     "mailgun-js": "^0.6.7",
     "moment": "^2.8.4",
     "mongoose": "^3.8.21",
+    "swig": "^1.4.2",
     "thunkify": "^2.1.2"
   },
   "keywords": [
