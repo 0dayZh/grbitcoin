@@ -15,6 +15,7 @@ var path = require('path');
 var render = require('koa-ejs');
 var staticServer = require('koa-static');
 var validate = require('koa-validate');
+var onerror = require('koa-onerror');
 
 var app = koa();
 
@@ -35,6 +36,11 @@ mongoose.connection.on('disconnected', connect);
 fs.readdirSync(__dirname + '/models').forEach(function (file) {
   if (~file.indexOf('.js')) require(__dirname + '/models/' + file);
 });
+
+/**
+ * error handler
+ */
+onerror(app);
 
 /**
  * ignore favicon
