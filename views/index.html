@@ -12,7 +12,36 @@
     <section>
       <div class="content">
         <h1 id="introduction">Introduction</h1>
-        <p>"There are thousands Bitcoin transcations every day, but you can not event remember your Bitcoin address. So face the reality or find a way to connect to reality. Grbitcoin gives a chance to you to bind your public Bitcoin address with your email. So why not send and receive Bitcoin via email?"</p>
+        <p>There are thousands Bitcoin transcations every day, but you can not event remember your Bitcoin address. Find a way to connect to reality or face the reality. Why not send and receive your Bitcoin via email?</p>
+        <p>Grbitcoin gives a chance to you to do this, without abandoning decentralized Bitcoin system.</p>
+      </div>
+    </section>
+    <section>
+      <div class="content">
+        <h1 id="developer">Developer Resources</h1>
+        <p>Grbitcoin 'APIs' require no authentication, and are all based around simple HTTP GET requests.</p>
+        <h2>Get a bitcoin address</h2>
+        <pre><code>GET /bitcoins/:email</code></pre>
+        <h3>Response</h3>
+        <pre class="headers"><code>Status: 200 OK</code></pre>
+        <pre class="body-response"><code>{
+  "email": "0day.zh@gmail.com",
+  "bitcoin_address": "19QT9EarJHQ97aV17TYaBgoyNhCqN1vthH"
+}</code></pre>
+        <p>
+          Note: If the <code>:email</code> is not binded to Bitcoin address, there will be a <code>404</code> response
+        </p>
+        <h2>Get an email address</h2>
+        <pre><code>GET /emails/:bitcoin_address</code></pre>
+        <h3>Response</h3>
+        <pre class="headers"><code>Status: 200 OK</code></pre>
+        <pre class="body-response"><code>{
+  "email": "0day.zh@gmail.com",
+  "bitcoin_address": "19QT9EarJHQ97aV17TYaBgoyNhCqN1vthH"
+}</code></pre>
+        <p>
+          Note: If the <code>:bitcoin_address</code> is not binded to any email, there will be a <code>404</code> response
+        </p>
       </div>
     </section>
     <script>
