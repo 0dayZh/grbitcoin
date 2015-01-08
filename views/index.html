@@ -19,12 +19,16 @@
     <section>
       <div class="content">
         <h1 id="developer">Developer Resources</h1>
-        <p>Grbitcoin 'APIs' require no authentication, and are all based around simple HTTP GET requests.</p>
         <div class="alert">
           <p>
             <strong>Note</strong>: Grbitcoin 'APIs' are still in beta, we recommend NOT using them in your production environment until the stable version come.
           </p>
         </div>
+        <h2 id="current-version">Current Version</h2>
+        <p>By default, all requests receive the <strong>v1-beta</strong> of the API. We encourage you to explicityly request this version via the <code>Accept</code> header.</p>
+        <pre><code>Accept: application/vnd.grbitcoin.v1-beta+json</code></pre>
+        <h2 id="schema">Schema</h2>
+        <p>All API is accessed form <code>api.grbitcoin.com</code> domain. All data is sent and received as JSON. Currently All API access is over HTTP.</p>
         <h2>Get a Bitcoin address</h2>
         <pre><code>GET /bitcoins/:email</code></pre>
         <h3>Response</h3>
