@@ -50,7 +50,7 @@ Connection: keep-alive
   "bitcoin_address": "19QT9EarJHQ97aV17TYaBgoyNhCqN1vthH"
 }</code></pre>
         <p>
-          Note: If the <code>:email</code> is not binded to Bitcoin address, there will be a <code>404</code> response
+          Note: Requests passing unbinded <code>:email</code> will return <code>404 Not Found</code>.
         </p>
         <h2>Get an email address</h2>
         <pre><code>GET /emails/:bitcoin_address</code></pre>
@@ -61,7 +61,7 @@ Connection: keep-alive
   "bitcoin_address": "19QT9EarJHQ97aV17TYaBgoyNhCqN1vthH"
 }</code></pre>
         <p>
-          Note: If the <code>:bitcoin_address</code> is not binded to any email, there will be a <code>404</code> response
+          Note: Requests passing unbinded <code>:bitcoin_address</code> will return <code>404 Not Found</code>.
         </p>
       </div>
     </section>
