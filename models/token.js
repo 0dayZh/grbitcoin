@@ -13,4 +13,11 @@ var TokenSchema = new Schema({
   expiration_date : { type: Date, default: '' }
 });
 
+TokenSchema.method('toJSON', function() {
+  var token = this.toObject();
+  delete token._id;
+  delete token.__v;
+  return token;
+});
+
 mongoose.model('Token', TokenSchema);

@@ -12,4 +12,11 @@ var ConnectionSchema = new Schema({
   bitcoin_address : { type: String, default: '' }
 });
 
+ConnectionSchema.method('toJSON', function() {
+  var connection = this.toObject();
+  delete connection._id;
+  delete connection.__v;
+  return connection;
+});
+
 mongoose.model('Connection', ConnectionSchema);
