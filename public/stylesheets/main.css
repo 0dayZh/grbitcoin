@@ -36,6 +36,21 @@ section:not(#top) {
   text-align: center;
 }
 
+/*Form/Input Styles*/
+.email-send {
+  text-align: center;
+}
+.email-send input[type="text"] {
+  width: 60%;
+  min-height: 36px;
+  padding: 3px 10px;
+  font-size: 14px;
+  border-radius: 18px;
+  -moz-border-radius: 18px;
+  -khtml-border-radius: 18px;
+  -webkit-border-radius: 18px;
+}
+
 /*------------------------------------------------------------------------------
 Pre/Code Styles
 ------------------------------------------------------------------------------*/
