@@ -5,6 +5,7 @@ var mount = require('koa-mount');
 var api_v1 = require('../controllers/api_v1');
 var web = require('../controllers/web');
 var error = require('../error');
+var config = require('../config');
 
 module.exports = function(app) {
   // api
@@ -29,6 +30,6 @@ module.exports = function(app) {
   app.use(error());
 
   // mount middleware
-  app.use(mount('/v1', api_v1Router.middleware()))
+  app.use(mount('/' + config.api_version, api_v1Router.middleware()))
      .use(mount('/', webRouter.middleware()));
 }

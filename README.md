@@ -13,6 +13,7 @@
   - NOTICE: token 无效
   - NOTICE: bind success
 - 时间存成 UTC
+- 支持 Accept Header api versioning
 
 # DONE:
 

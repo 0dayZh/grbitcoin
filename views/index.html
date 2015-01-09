@@ -25,11 +25,13 @@
           </p>
         </div>
         <h2 id="current-version">Current Version</h2>
-        <p>By default, all requests receive the <strong>v1-beta</strong> of the API. We encourage you to explicityly request this version via the <code>Accept</code> header.</p>
-        <pre><code>Accept: application/vnd.grbitcoin.v1-beta+json</code></pre>
+        <!-- <p>By default, all requests receive the <strong>v1</strong> of the API. We encourage you to explicityly request this version via the <code>Accept</code> header.</p>
+        <pre><code>Accept: application/vnd.grbitcoin.v1+json</code></pre> -->
+        <p>By default, all requests receive the <strong>v1</strong> of the API. Currently, we encourage you to explicityly request this version via url.</p>
+        <pre><code>api.grbitcoin.com/v1</code></pre>
         <h2 id="schema">Schema</h2>
         <p>All API is accessed form <code>api.grbitcoin.com</code> domain. All data is sent and received as JSON. Currently All API access is over HTTP.</p>
-        <pre class="terminal">$ curl -i http://api.grbitcoin.com/bitcoins/0day.zh@gmail.com
+        <pre class="terminal">$ curl -i http://api.grbitcoin.com/v1/bitcoins/0day.zh@gmail.com
 
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
