@@ -22,6 +22,7 @@ a {
   color: #33a0c0;
 }
 
+/*Section Styles*/
 section {
   min-height: 50%;
 }
@@ -217,7 +218,7 @@ section:nth-child(2n) {
 #menu ul {
   display: none;
   position: absolute;
-  top: 35px;
+  top: 1em;
   right: 0;
   margin: 0;
   border: 1px solid #efefef;
