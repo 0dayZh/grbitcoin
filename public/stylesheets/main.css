@@ -266,6 +266,11 @@ section:nth-child(2n) {
   }
 }
 
+@font-face {
+  font-family: Italiana;
+  src: url(/fonts/Italiana-Regular.ttf);
+}
+
 #footer {
   position: relative;
   bottom:0;
