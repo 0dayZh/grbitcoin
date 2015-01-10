@@ -30,7 +30,14 @@
         <h1 id="bind">Bind</h1>
         <p>To use Grbitcoin, you have no needs to register another user account. What you should do is just binding your own email. That's it.</p>
         <br>
-        <p>Grbitcoin service is under cunstruction...</p>
+        <div class="email-send">
+          <form id="submit_form_email" class="pure-form" novalidate>
+            <fieldset>
+              <input class="pure-input-2-3 pure-input-rounded" name="email" type="email" placeholder="Email" required>
+              <button id="email_submit" type="submit" class="pure-button pure-button-primary">I'm in</button>
+            </fieldset>
+          </form>
+        </div>
       </div>
     </section>
     <section>
@@ -85,7 +92,7 @@ Connection: keep-alive
 
     <% include footer.ejs %>
 
-    <!-- <srcipt src="/scripts/event.js"></script> -->
+    <srcipt src="/scripts/event.js"></script>
     <script><% include analytics-scripts.ejs %></script>
   </body>
 </html>
