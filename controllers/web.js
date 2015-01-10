@@ -135,6 +135,4 @@ exports.sendEmailIfNeeded = function *(next) {
       UtilEmail.sendEmail(email, 'Bind to your bitcoin address', html_body);
     }
   }
-
-  this.redirect('/');
 }
