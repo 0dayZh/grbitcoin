@@ -37,20 +37,16 @@
         <p>To use Grbitcoin, you have no needs to register another user account. What you should do is just binding your own email. That's it.</p>
         <br>
         <div class="email-send">
-          <!-- <form id="submit_form_email" method="post" class="pure-form" novalidate>
-            <fieldset>
-              <input class="pure-input-2-3 pure-input-rounded" name="email" type="email" placeholder="Email" required>
-              <button id="email_submit" name="email_submit" type="submit" class="pure-button pure-button-primary">I'm in</button>
-            </fieldset>
-          </form> -->
-          <button id="warn-me" class="btn">Click to see a warning alert</button>
+          <form id="submit_form_email" class="pure-form" method="post" novalidate>
+            <input type="email" class="pure-input-rounded pure-input-2-3" placeholder="Enter your own email" required>
+          </form>
         </div>
       </div>
     </section>
     <section>
       <div class="content">
         <h1 id="api">API</h1>
-        <div class="alert">
+        <div class="tips-notice">
           <p>
             <strong>Note</strong>: Grbitcoin 'APIs' are still in beta, we recommend NOT using them in your production environment until the stable version come out.
           </p>
@@ -99,12 +95,26 @@ Connection: keep-alive
 
     <% include footer.ejs %>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
     <script><% include analytics-scripts.ejs %></script>
     <script src="/scripts/bootstrap.min.js"></script>
     <script src="/scripts/jquery.bsAlerts.js"></script>
 
-    <!-- // <script src="/scripts/event.js"></script> -->
+    <script>
+    $(function () {
+      $('#submit_form_email').submit(function (e) {
+        $('#submit_form_email').attr('action', "/sendEmail");
+        $(document).trigger("add-alerts", [
+      {
+        'message': "Request email has been sent to your own email, please check it out and enjoy your life.",
+        'priority': 'success'
+      }
+      ]);
+      });
+    });
+    </script>
     <script>
     $(function() {
       $("#warn-me").click(function() {
