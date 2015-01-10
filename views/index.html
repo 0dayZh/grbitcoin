@@ -2,6 +2,12 @@
 <html lang="en">
   <% include header.ejs %>
   <body>
+    <div id="message">
+      <div style="padding: 5px;">
+        <div id="inner-message" data-alerts="alerts" data-titles="{'success': '<em>Done</em>'}" data-fade="3000">
+        </div>
+      </div>
+    </div>
     <section id="top">
       <div id="menu">
         <a id="toggle" href="#">
@@ -31,12 +37,13 @@
         <p>To use Grbitcoin, you have no needs to register another user account. What you should do is just binding your own email. That's it.</p>
         <br>
         <div class="email-send">
-          <form id="submit_form_email" method="post" class="pure-form" novalidate>
+          <!-- <form id="submit_form_email" method="post" class="pure-form" novalidate>
             <fieldset>
               <input class="pure-input-2-3 pure-input-rounded" name="email" type="email" placeholder="Email" required>
-              <button id="email_submit" type="submit" class="pure-button pure-button-primary">I'm in</button>
+              <button id="email_submit" name="email_submit" type="submit" class="pure-button pure-button-primary">I'm in</button>
             </fieldset>
-          </form>
+          </form> -->
+          <button id="warn-me" class="btn">Click to see a warning alert</button>
         </div>
       </div>
     </section>
@@ -92,7 +99,23 @@ Connection: keep-alive
 
     <% include footer.ejs %>
 
-    <script src="/scripts/event.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script><% include analytics-scripts.ejs %></script>
+    <script src="/scripts/bootstrap.min.js"></script>
+    <script src="/scripts/jquery.bsAlerts.js"></script>
+
+    <!-- // <script src="/scripts/event.js"></script> -->
+    <script>
+    $(function() {
+      $("#warn-me").click(function() {
+        $(document).trigger("add-alerts", [
+      {
+        'message': "Request email has been sent to your own email, please check it out and enjoy your life.",
+        'priority': 'success'
+      }
+      ]);
+    });
+  });
+  </script>
   </body>
 </html>

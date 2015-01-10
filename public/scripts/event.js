@@ -1,9 +1,10 @@
 $(function () {
   $('#submit_form_email').submit(function (e) {
-    // return false; // 不提交
+    alert($("submit_form_email").valid());
+    return false;
     if ($("submit_form_email").valid()) {
       alert('Valid!');
-      return false;
+      return true;
     } else {
       alert('invalid!');
       return false;

@@ -296,3 +296,18 @@ section:nth-child(2n) {
   text-align: center;
   padding: 20px 0;
 }
+
+#message {
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60%;
+}
+#inner-message {
+  text-align: left;
+  margin-right: 0 auto;
+}
