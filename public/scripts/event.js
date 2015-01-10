@@ -1,5 +1,6 @@
 $(function () {
-  $('#email_submit').click(function (e) {
+  $('#submit_form_email').submit(function (e) {
+    // return false; // 不提交
     if ($("submit_form_email").valid()) {
       alert('Valid!');
       return false;
