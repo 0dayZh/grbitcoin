@@ -23,7 +23,7 @@ a {
 }
 
 /*Section Styles*/
-section {
+section:not(#message) {
   min-height: 50%;
 }
 
@@ -127,6 +127,11 @@ pre span.comment {color: #aaa;}
   border: 1px solid #97c1da;
   border-radius: 3px;
   background-color: #d8ebf8;
+}
+
+.pure-button {
+  background-color: #3a90d7;
+  border-radius: 20px;
 }
 
 p {
