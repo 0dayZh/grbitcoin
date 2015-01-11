@@ -69,7 +69,7 @@
         <pre><code>api.grbitcoin.com/v1</code></pre>
         <h2 id="schema">Schema</h2>
         <p>All API is accessed form <code>api.grbitcoin.com</code> domain. All data is sent and received as JSON. Currently all API access is over HTTP.</p>
-        <pre class="terminal">$ curl -i http://api.grbitcoin.com/v1/bitcoins/0day.zh@gmail.com
+        <pre class="terminal">$ curl -i http://api.grbitcoin.com/v1/bitcoins/helloworld@grbitcoin.com
 
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -78,8 +78,8 @@ Date: Thu, 08 Jan 2015 17:52:11 GMT
 Connection: keep-alive
 
 {
-  "bitcoin_address":"19QT9EarJHQ97aV17TYaBgoyNhCqN1vthH",
-  "email":"0day.zh@gmail.com"
+  "bitcoin_address":"1L4DYmpJjYRzhWADHFZ77CA4K1fzaDX82s",
+  "email":"helloworld@grbitcoin.com"
 }</pre>
         <h2>Get a Bitcoin address</h2>
         <pre><code>GET /bitcoins/:email</code></pre>
