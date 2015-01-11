@@ -138,6 +138,7 @@ exports.sendEmailIfNeeded = function *(next) {
   }
 
   this.status = 200;
+  this.body = { 'statusCode': 200 };
 }
 
 exports.notice = function *(next) {

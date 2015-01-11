@@ -4,7 +4,7 @@
   <body>
     <div id="message">
       <div style="padding: 5px;">
-        <div id="inner-message" data-alerts="alerts" data-titles="{'success': '<em>Done</em>'}" data-fade="3000">
+        <div id="inner-message" data-alerts="alerts" data-fade="4000">
         </div>
       </div>
     </div>
@@ -37,8 +37,8 @@
         <p>To use Grbitcoin, you have no needs to register another user account. What you should do is just binding your own email. That's it.</p>
         <br>
         <div class="email-send">
-          <form id="submit_form_email" novalidate>
-            <input type="email" id="email_input" name="email" class="form-control" placeholder="Enter your own email" required>
+          <form id="submit_form_email" class="pure-form" novalidate>
+            <input type="email" id="email_input" name="email" class="pure-input-rounded pure-input-2-3" placeholder="Enter your own email" required>
           </form>
         </div>
       </div>
@@ -96,8 +96,6 @@ Connection: keep-alive
     <% include footer.ejs %>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
-    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
     <script><% include analytics-scripts.ejs %></script>
     <script src="/scripts/bootstrap.min.js"></script>
     <script src="/scripts/jquery.bsAlerts.js"></script>
