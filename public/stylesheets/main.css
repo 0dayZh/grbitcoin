@@ -48,6 +48,19 @@ Form/Input Styles
   font-size: 15px;
 }
 
+/*Buttons Styles*/
+#email-us-container {
+  text-align:center;
+}
+
+#email-us-container a {
+  border-radius: 22px;
+  width: 233px;
+  height: 40px;
+  color: white;
+  background: #3a90d7;
+}
+
 /*------------------------------------------------------------------------------
 Pre/Code Styles
 ------------------------------------------------------------------------------*/

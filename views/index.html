@@ -16,6 +16,7 @@
         <ul>
           <li><a href="#introduction">Introduction</a></li>
           <li><a href="#bind">Bind</a></li>
+          <li><a href="#partners">Partners</a></li>
           <li><a href="#api">API</a></li>
         </ul>
       </div>
@@ -34,13 +35,25 @@
     <section>
       <div class="content">
         <h1 id="bind">Bind</h1>
-        <p>To use Grbitcoin, you have no needs to register another user account. What you should do is just binding your own email. That's it.</p>
+        <p>To use Grbitcoin, you have no needs to register another user account. What you should do is just binding your own email to your bitcoin address via email. That's it.</p>
         <br>
         <div class="email-send">
           <form id="submit_form_email" class="pure-form" novalidate>
             <input type="email" id="email_input" name="email" class="pure-input-rounded pure-input-2-3" placeholder="Enter your own email" required>
           </form>
         </div>
+      </div>
+    </section>
+    <section>
+      <div class="content">
+        <h1 id="partners">Partners</h1>
+        <p>Pirates never raise the sail alone.</p>
+        <p>Embed Grbitcoin on your production and let us know.</p>
+        <br>
+        <div id="email-us-container">
+          <a class="pure-button pure-button-primary" href="mailto:helloword@grbitcoin.com">Email us</a>
+        </div>
+        <br>
       </div>
     </section>
     <section>
@@ -55,7 +68,7 @@
         <p>By default, all requests receive the <strong>v1</strong> of the API. Currently, we encourage you to explicityly request this version via url.</p>
         <pre><code>api.grbitcoin.com/v1</code></pre>
         <h2 id="schema">Schema</h2>
-        <p>All API is accessed form <code>api.grbitcoin.com</code> domain. All data is sent and received as JSON. Currently All API access is over HTTP.</p>
+        <p>All API is accessed form <code>api.grbitcoin.com</code> domain. All data is sent and received as JSON. Currently all API access is over HTTP.</p>
         <pre class="terminal">$ curl -i http://api.grbitcoin.com/v1/bitcoins/0day.zh@gmail.com
 
 HTTP/1.1 200 OK
@@ -73,8 +86,8 @@ Connection: keep-alive
         <h3>Response</h3>
         <pre class="headers"><code>Status: 200 OK</code></pre>
         <pre class="body-response"><code>{
-  "email": "0day.zh@gmail.com",
-  "bitcoin_address": "19QT9EarJHQ97aV17TYaBgoyNhCqN1vthH"
+  "email": "helloworld@grbitcoin.com",
+  "bitcoin_address": "1L4DYmpJjYRzhWADHFZ77CA4K1fzaDX82s"
 }</code></pre>
         <p>
           Note: Requests passing unbinded <code>:email</code> will return <code>404 Not Found</code>.
@@ -84,8 +97,8 @@ Connection: keep-alive
         <h3>Response</h3>
         <pre class="headers"><code>Status: 200 OK</code></pre>
         <pre class="body-response"><code>{
-  "email": "0day.zh@gmail.com",
-  "bitcoin_address": "19QT9EarJHQ97aV17TYaBgoyNhCqN1vthH"
+  "email": "helloworld@grbitcoin.com",
+  "bitcoin_address": "1L4DYmpJjYRzhWADHFZ77CA4K1fzaDX82s"
 }</code></pre>
         <p>
           Note: Requests passing unbinded <code>:bitcoin_address</code> will return <code>404 Not Found</code>.
