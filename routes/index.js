@@ -20,7 +20,7 @@ module.exports = function(app) {
 
   webRouter
     .get('/', web.index)
-    .post('/sendEmail', web.sendEmailIfNeeded)
+    .post('/send_email', web.sendEmailIfNeeded)
     .get('/bind/:token_string', web.bindEmail)
     .post('/bind', web.bindBitcoinAddress)
     .get('/unbind/:token_string', web.unbindEmail)

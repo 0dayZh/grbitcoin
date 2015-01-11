@@ -79,6 +79,7 @@ exports.sendEmailIfNeeded = function *(next) {
   if (this.checkBody('email').isEmail("Bad email."));
   if (this.errors) {
     console.log(this.errors);
+    this.throw(400, 'Bad email.');
   } else {
     var email = this.request.body.email;
     email = email.trim().toLowerCase();
@@ -135,4 +136,6 @@ exports.sendEmailIfNeeded = function *(next) {
       UtilEmail.sendEmail(email, 'Bind to your bitcoin address', html_body);
     }
   }
+
+  this.status = 200;
 }
