@@ -34,6 +34,8 @@ $(function () {
       }
     })
     .done(function( data, textStatus, jqXHR ) {
+      $('#email_input').val('');
+
       $(document).trigger("add-alerts", [
       {
         'message': "Success! Email has been sent to your own email, please check it out and enjoy your life.",
