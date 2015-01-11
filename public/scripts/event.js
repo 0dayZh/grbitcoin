@@ -1,22 +1,11 @@
 $(function () {
-  $("#submit_form_email").validate({
-    rules: {
-      field: {
-        required: true,
-        email: true
-      }
-    }
-  });
-
   $('#submit_form_email').submit(function (e) {
-    alert($("submit_form_email").valid());
-    return false;
-    if ($("submit_form_email").valid()) {
-      alert('Valid!');
-      return true;
-    } else {
-      alert('invalid!');
-      return false;
-    }
-  });
+    $('#submit_form_email').attr('action', "/sendEmail");
+    $(document).trigger("add-alerts", [
+  {
+    'message': "Request email has been sent to your own email, please check it out and enjoy your life.",
+    'priority': 'success'
+  }
+  ]);
+});
 });

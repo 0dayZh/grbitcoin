@@ -38,7 +38,7 @@
         <br>
         <div class="email-send">
           <form id="submit_form_email" class="pure-form" method="post" novalidate>
-            <input type="email" class="pure-input-rounded pure-input-2-3" placeholder="Enter your own email" required>
+            <input type="email" name="email" class="form-control" placeholder="Enter your own email" required>
           </form>
         </div>
       </div>
@@ -102,30 +102,6 @@ Connection: keep-alive
     <script src="/scripts/bootstrap.min.js"></script>
     <script src="/scripts/jquery.bsAlerts.js"></script>
 
-    <script>
-    $(function () {
-      $('#submit_form_email').submit(function (e) {
-        $('#submit_form_email').attr('action', "/sendEmail");
-        $(document).trigger("add-alerts", [
-      {
-        'message': "Request email has been sent to your own email, please check it out and enjoy your life.",
-        'priority': 'success'
-      }
-      ]);
-      });
-    });
-    </script>
-    <script>
-    $(function() {
-      $("#warn-me").click(function() {
-        $(document).trigger("add-alerts", [
-      {
-        'message': "Request email has been sent to your own email, please check it out and enjoy your life.",
-        'priority': 'success'
-      }
-      ]);
-    });
-  });
-  </script>
+    <script src="/scripts/event.js"></script>
   </body>
 </html>
