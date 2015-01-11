@@ -139,3 +139,7 @@ exports.sendEmailIfNeeded = function *(next) {
 
   this.status = 200;
 }
+
+exports.notice = function *(next) {
+  yield this.render('notice', { 'notice': this.params.notice_message });
+}

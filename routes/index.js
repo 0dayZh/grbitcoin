@@ -24,7 +24,8 @@ module.exports = function(app) {
     .get('/bind/:token_string', web.bindEmail)
     .post('/bind', web.bindBitcoinAddress)
     .get('/unbind/:token_string', web.unbindEmail)
-    .get('/rebind/:token_string', web.rebindEmail);
+    .get('/rebind/:token_string', web.rebindEmail)
+    .get('/notice/:notice_message', web.notice);
 
   // error handler
   app.use(error());
