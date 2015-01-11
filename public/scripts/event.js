@@ -9,7 +9,7 @@ $(function () {
     if (!IsEmail(email_input)) {
       $(document).trigger("add-alerts", [
     {
-      'message': "Please make sure the email address is right",
+      'message': "Please make sure the email address is right.",
       'priority': 'error'
     }
     ]);
@@ -36,7 +36,7 @@ $(function () {
     .done(function( data, textStatus, jqXHR ) {
       $(document).trigger("add-alerts", [
       {
-        'message': "Success! Request email has been sent to your own email, please check it out and enjoy your life.",
+        'message': "Success! Email has been sent to your own email, please check it out and enjoy your life.",
         'priority': 'success'
       }
       ]);
@@ -44,7 +44,7 @@ $(function () {
     .fail(function( jqXHR, textStatus, errorThrown ) {
       $(document).trigger("add-alerts", [
       {
-        'message': "Request email has been sent to your own email, please check it out and enjoy your life.",
+        'message': "Failure! Some wrong happened.",
         'priority': 'warning'
       }
       ]);
