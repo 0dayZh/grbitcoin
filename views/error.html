@@ -2,13 +2,15 @@
 <html lang="en">
 <% include header.ejs %>
 <body>
-  <div class="container">
-    <section class="content">
-      <p>Oops. <%= message %></p>
-    </section>
-  </div>
+  <section id="top">
+    <div id="heading">
+      <p style="font-size: 1.4em">Oops. <%= message %></p>
+      <br>
+      <a class="button-secondary pure-button" href="/">Back to homepage</a>
+    </div>
+  </section>
   <script>
-  <% include analytics-scripts.ejs %>
+    <% include analytics-scripts.ejs %>
   </script>
 </body>
 <% include footer.ejs %>

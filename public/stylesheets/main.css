@@ -49,16 +49,18 @@ Form/Input Styles
 }
 
 /*Buttons Styles*/
-#email-us-container {
-  text-align:center;
-}
-
-#email-us-container a {
+.pure-button {
   border-radius: 22px;
   width: 233px;
   height: 40px;
+}
+
+.button-secondary {
   color: white;
   background: #3a90d7;
+}
+#email-us-container {
+  text-align:center;
 }
 
 /*------------------------------------------------------------------------------
