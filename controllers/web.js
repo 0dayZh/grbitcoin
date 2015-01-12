@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-var UtilEmail = require('../util-email');
+var emailUtils = require('../email-utils');
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var moment = require('moment');
@@ -126,14 +126,14 @@ exports.sendEmailIfNeeded = function *(next) {
         bitcoin_address: connection.bitcoin_address,
         token_string: token.token_string});
 
-      UtilEmail.sendEmail(email, 'Request for your action', html_body);
+        emailUtils.sendEmail(email, 'Request for your action', html_body);
     } else {
       console.log('Email ( ' + email + ' ) has not binded.');
       var html_body = yield this.render('email-templates/bind-premailer', {
         writeResp: false,
         token_string: token.token_string});
 
-      UtilEmail.sendEmail(email, 'Bind to your bitcoin address', html_body);
+        emailUtils.sendEmail(email, 'Bind to your bitcoin address', html_body);
     }
   }
 
