@@ -80,13 +80,6 @@ render(app, {
 var routes = require('./routes/');
 routes(app);
 
-// Insert sample data
-// var Connection = mongoose.model('Connection');
-// var sample = new Connection({ email: '0day.zh@gmail.com', bitcoin_address: '19QT9EarJHQ97aV17TYaBgoyNhCqN1vthH' });
-// sample.save(function(err) {
-//   console.log(err);
-// });
-
 app = module.exports = http.createServer(app.callback());
 
 if (!module.parent) {
