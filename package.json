@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/0dayZh/grbitcoin/issues"
   },
-  "homepage": "https://github.com/0dayZh/grbitcoin"
+  "homepage": "https://github.com/0dayZh/grbitcoin",
+  "scripts":{
+    "start": "node --harmony app.js"
+  }
 }
