@@ -1,8 +1,13 @@
 {
   "name": "grbitcoin",
+  "private": true,
   "version": "0.0.1",
   "description": "A globally recognized bitcoin",
   "main": "app.js",
+  "engine-strict": true,
+  "engines": {
+    "node": ">=0.11.x"
+  },
   "scripts": {
     "start": "node --harmony app.js"
   },
