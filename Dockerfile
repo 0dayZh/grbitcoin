@@ -1,17 +1,54 @@
 FROM ubuntu:14.04
 MAINTAINER 0dayZh <0day.zh@gmail.com>
+
+#
+# Env
+#
+
 ENV REFRESHED_AT 2015-01-13
 ENV DEBIAN_FRONTEND noninteractive
+ENV NODE_VERSION 0.11.14
+
+#
+# System
+#
 
 RUN apt-get -yqq update
-RUN apt-get -yqq install git
-RUN git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags` && . ~/.nvm/nvm.sh && nvm install v0.11.4 && nvm use v0.11.4 && nvm alias default v0.11.4
+RUN apt-get install -y make gcc g++ python curl libssl-dev
+
+#
+# Install node
+#
+
+RUN curl -L# http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz | tar -zx --strip 1 -C /usr/local
+
+#
+# Clean up
+#
+
+RUN rm -fr /usr/src/node
+
+#
+# Add app
+#
 
 ADD . /opt/grbitcoin/
+
+#
+# Install dependencies
+#
 
 WORKDIR /opt/grbitcoin/
 RUN npm install
 
+#
+# Expose port
+#
+
 EXPOSE 8481
+
+#
+# Start running
+#
 
 ENTRYPOINT npm start
