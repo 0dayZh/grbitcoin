@@ -4,7 +4,7 @@
   "description": "A globally recognized bitcoin",
   "main": "app.js",
   "scripts": {
-    "test": "make test"
+    "start": "node --harmony app.js"
   },
   "repository": {
     "type": "git",
@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "bitcoin-address": "^0.3.0",
+    "co-mocha": "^1.1.0",
+    "co-supertest": "0.0.7",
     "koa": "^0.14.0",
     "koa-bodyparser": "^1.3.0",
     "koa-ejs": "^1.1.3",
@@ -22,6 +24,7 @@
     "koa-static": "^1.4.8",
     "koa-validate": "^0.2.5",
     "mailgun-js": "^0.6.7",
+    "mocha": "^2.1.0",
     "moment": "^2.8.4",
     "mongoose": "^3.8.21",
     "swig": "^1.4.2",
@@ -35,8 +38,5 @@
   "bugs": {
     "url": "https://github.com/0dayZh/grbitcoin/issues"
   },
-  "homepage": "https://github.com/0dayZh/grbitcoin",
-  "scripts":{
-    "start": "node --harmony app.js"
-  }
+  "homepage": "https://github.com/0dayZh/grbitcoin"
 }
