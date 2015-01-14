@@ -23,4 +23,4 @@ RUN mkdir -p /data/db
 EXPOSE 27017
 
 # Set usr/bin/mongod as the dockerized entry-point application
-ENTRYPOINT usr/bin/mongod
+ENTRYPOINT ["usr/bin/mongod", "--dbpath", "/data/db"]
