@@ -1,8 +1,0 @@
-web:
-  build: .
-  links:
-    - mongo
-  ports:
-    - "8481:80"
-mongo:
-  image: mongo:latest
