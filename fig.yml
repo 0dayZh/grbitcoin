@@ -5,4 +5,4 @@ web:
   ports:
     - "8481:80"
 mongo:
-  image: mongo
+  image: mongo:latest
