@@ -1,0 +1,17 @@
+# doc
+*.md
+
+# fig
+fig.yml
+
+# git
+.git/
+
+# Logs
+logs/
+
+# tmp
+tmp/
+
+# System
+.DS_Store
