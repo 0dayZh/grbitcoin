@@ -23,7 +23,7 @@ var app = koa();
  */
 var connect = function () {
   var options = { server: { socketOptions: { keepAlive: 1 } } };
-  mongoose.connect('mongodb://localhost/grbitcoin_db', options);
+  mongoose.connect('mongodb://mongodb/grbitcoin_db', options);
 };
 connect();
 
