@@ -21,7 +21,6 @@ var app = koa();
 /**
  * connect to mongodb
  */
-// Connect to mongodb
 var connect = function () {
   var options = { server: { socketOptions: { keepAlive: 1 } } };
   mongoose.connect('mongodb://localhost/grbitcoin_db', options);
