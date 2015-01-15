@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 MAINTAINER 0dayZh <0day.zh@gmail.com>
-ENV REFRESHED_AT 2015-01-14
+ENV REFRESHED_AT 2015-01-16
 
 # Environment defines
 
