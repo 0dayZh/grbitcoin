@@ -10,7 +10,7 @@ ENV NODE_VERSION 0.11.14
 # System
 
 RUN apt-get -yqq update
-RUN apt-get install -y make gcc g++ python curl libssl-dev
+RUN apt-get install -y make gcc g++ python curl libssl-dev git
 
 # Install node
 
