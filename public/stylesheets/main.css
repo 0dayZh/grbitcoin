@@ -191,6 +191,49 @@ section:nth-child(2n) {
   text-align: left;
 }
 
+/*------------------------------------------------------------------------------
+Table Styles
+------------------------------------------------------------------------------*/
+.content table {
+  width: 100%;
+  overflow: auto;
+  display: block;
+  margin: 15px 0;
+  border-collapse: collapse;
+}
+
+.content thead {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.content table th {
+  border: 1px solid #ddd;
+  padding: 10px 13px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.content tbody {
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.content table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+  vertical-align: inherit;
+}
+
+.content table td {
+  border: 1px solid #ddd;
+  padding: 10px 13px;
+}
+
 #top {
   height: 100%;
 }
