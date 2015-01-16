@@ -6,8 +6,14 @@ var api_v1 = require('../controllers/api_v1');
 var web = require('../controllers/web');
 var error = require('../error');
 var config = require('../config');
+var limit = require('koa-better-ratelimit');
 
 module.exports = function(app) {
+  // RateLimit
+  app.use(limit({
+    duration: 1000 * 60 * 60 * 1, // 1 hour
+  }));
+
   // api
   var api_v1Router = new Router();
 
