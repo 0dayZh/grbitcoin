@@ -74,6 +74,9 @@
         <pre class="terminal">$ curl -i http://api.grbitcoin.com/v1/bitcoins/helloworld@grbitcoin.com
 
 HTTP/1.1 200 OK
+X-RateLimit-Limit: 2000
+X-RateLimit-Remaining: 1999
+X-RateLimit-Reset: 1421419159294
 Content-Type: application/json; charset=utf-8
 Content-Length: 84
 Date: Thu, 08 Jan 2015 17:52:11 GMT
@@ -83,6 +86,39 @@ Connection: keep-alive
   "bitcoin_address":"1L4DYmpJjYRzhWADHFZ77CA4K1fzaDX82s",
   "email":"helloworld@grbitcoin.com"
 }</pre>
+        <h2>Rate Limiting</h2>
+        <p>For requests in Beta version, you can make up to 2,000 requests per hour.</p>
+        <p>You can check the returned HTTP headers of any API request to see your current rate limit status:</p>
+        <pre class="terminal">$ curl -i http://api.grbitcoin.com/v1/bitcoins/helloworld@grbitcoin.com
+
+HTTP/1.1 200 OK
+X-RateLimit-Limit: 2000
+X-RateLimit-Remaining: 1999
+X-RateLimit-Reset: 1421419159294
+Date: Thu, 08 Jan 2015 17:52:11 GMT</pre>
+        <p>The headers tell you everything you need to know about your current rate limit status:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Header Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>X-RateLimit-Limit</code></td>
+              <td>The maximum number of requests that the consumer is permitted to make per hour.</td>
+            </tr>
+            <tr>
+              <td><code>X-RateLimit-Remaining</code></td>
+              <td>The number of requests remaining in the current rate limit window.</td>
+            </tr>
+            <tr>
+              <td><code>X-RateLimit-Reset</code></td>
+              <td>The time at which the current rate limit window resets in <a href="http://en.wikipedia.org/wiki/Unix_time">UTC epoch seconds</a>.</td>
+            </tr>
+          </tbody>
+        </table>
         <h2>Get a Bitcoin address</h2>
         <pre><code>GET /bitcoins/:email</code></pre>
         <h3>Response</h3>
