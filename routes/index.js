@@ -12,6 +12,7 @@ module.exports = function(app) {
   // RateLimit
   app.use(limit({
     duration: 1000 * 60 * 60 * 1, // 1 hour
+    max: 2000   // max to 2000 requests per ip
   }));
 
   // api
