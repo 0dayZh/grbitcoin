@@ -61,7 +61,7 @@ exports.bindBitcoinAddress = function *(next) {
         connection.save = thunk(connection.save);
         connection = yield connection.save();
         connection = connection[0];
-        yield this.render('notice', { 'notice': 'Binded.' });
+        yield this.render('notice', { 'notice': 'Binded successfully.' });
       } else {
         yield this.render('notice', { 'notice': 'Make sure you open the url from email directly.' });
       }
