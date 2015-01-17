@@ -43,11 +43,11 @@ function error() {
 
         case 'json':
           if ('development' == env) {
-            this.body = { code: err.status, message: err.message };
+            this.body = { message: err.message };
           } else if (err.expose) {
-            this.body = { code: err.status, message: err.message };
+            this.body = { message: err.message };
           } else {
-            this.body = { code: err.status, message: http.STATUS_CODES[err.status] };
+            this.body = { message: http.STATUS_CODES[err.status] };
           }
           break;
 

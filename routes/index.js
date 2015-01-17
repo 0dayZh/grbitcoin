@@ -20,7 +20,9 @@ module.exports = function(app) {
 
   api_v1Router
     .get('/bitcoins/:email', api_v1.getBitcoinAddress)
-    .get('/emails/:bitcoin_address', api_v1.getEmail);
+    .get('/bitcoins', api_v1.getBitcoinAddress422)
+    .get('/emails/:bitcoin_address', api_v1.getEmail)
+    .get('/emails', api_v1.getEmail422);
 
   // web
   var webRouter = new Router();
