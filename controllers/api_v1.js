@@ -8,7 +8,7 @@ var Connection = mongoose.model('Connection');
 var bitcoinAddress = require('bitcoin-address');
 
 exports.getBitcoinAddress422 = function *(next) {
-  this.throw(422, "Missing email parameter.");
+  this.throw(422, "Validation Failed");
 }
 
 exports.getBitcoinAddress = function *(next) {
@@ -26,14 +26,14 @@ exports.getBitcoinAddress = function *(next) {
 }
 
 exports.getEmail422 = function *(next) {
-  this.throw(422, 'Missing Bitcoin address parameter.');
+  this.throw(422, 'Validation Failed');
 }
 
 exports.getEmail = function *(next) {
   var bitcoin_address = this.params.bitcoin_address;
 
   if (!bitcoinAddress.validate(bitcoin_address)) {
-    this.throw(422, 'Invalid Bitcoin address.');
+    this.throw(422, 'Validation Failed');
     return;
   }
 

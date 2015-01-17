@@ -91,7 +91,7 @@ exports.sendEmailIfNeeded = function *(next) {
 
   if (this.checkBody('email').isEmail("Bad email."));
   if (this.errors) {
-    this.throw(422, 'Invalid email.');
+    this.throw(422, 'Validation Failed');
     return;
   } else {
     var email = this.request.body.email;
