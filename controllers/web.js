@@ -76,15 +76,27 @@ exports.unbindEmail = function *(next) {
 }
 
 exports.sendEmailIfNeeded = function *(next) {
+  var body = this.request.body;
+  try {
+    var email = body['email'];
+  }
+  catch (err) {
+    if (this.response.status == 404) {
+      this.throw(400, 'Missing email field.');
+    } else {
+      this.throw(err);
+    }
+    return;
+  }
+
   if (this.checkBody('email').isEmail("Bad email."));
   if (this.errors) {
-    console.log(this.errors);
-    this.throw(400, 'Bad email.');
+    this.throw(422, 'Validation Failed');
+    return;
   } else {
     var email = this.request.body.email;
     email = email.trim().toLowerCase();
 
-    console.log('Checking email: ' + email);
     // check if the email has been request before.
     var query = Token.where({ email: email });
     var token = yield query.findOne().exec();
@@ -92,7 +104,6 @@ exports.sendEmailIfNeeded = function *(next) {
 
     if (!token) {
       // fresh incoming email
-      console.log('Email ( ' + email + ' ) is a fresh incoming one.');
       var hash = crypto.createHash('md5').update(email).digest('hex');
       var newToken = new Token({ email: email, token_string: hash, expiration_date: now.add(1, 'day').toDate()});
       newToken.save = thunk(newToken.save);
@@ -100,7 +111,6 @@ exports.sendEmailIfNeeded = function *(next) {
       token = newToken[0];
     } else if (moment(token.expiration_date).diff(now) <= 0) {
       // token expirated
-      console.log('Email ( ' + email + ' ) has been requested before, but the token has expirated.');
       var hash = crypto.createHash('md5').update(email).digest('hex');
       token.token_string = hash;
       token.expiration_date = now.add(1, 'day').toDate();
@@ -109,10 +119,8 @@ exports.sendEmailIfNeeded = function *(next) {
       token = token[0];
     } else {
       // email has been requested before
-      console.log('Email ( ' + email + ' ) has been requested before, and the token is still available.');
     }
 
-    console.log('Fetching connection bind to: ' + email);
     // check if the email has binded to a bitcoin address.
     var query = Connection.where({ email: email });
     var connection = yield query.findOne().exec();
@@ -120,7 +128,6 @@ exports.sendEmailIfNeeded = function *(next) {
     // send email
     if (connection) {
       // binded
-      console.log('Email ( ' + email + ' ) has binded.');
       var html_body = yield this.render('email-templates/binded-premailer', {
         writeResp: false,
         bitcoin_address: connection.bitcoin_address,
@@ -128,7 +135,6 @@ exports.sendEmailIfNeeded = function *(next) {
 
         emailUtils.sendEmail(email, 'Request for your action', html_body);
     } else {
-      console.log('Email ( ' + email + ' ) has not binded.');
       var html_body = yield this.render('email-templates/bind-premailer', {
         writeResp: false,
         token_string: token.token_string});
