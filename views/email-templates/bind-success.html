@@ -191,19 +191,13 @@
             <tr>
               <td>
                 <p>Hi there,</p>
-                <p>We’ve found you have binded this email to Bitcoin address:</p>
+                <p>We’ve found you have binded this email to Bitcoin address successfully:</p>
                 <div style="background-color: #EBF8FF; color: #3A90D7; border-radius: 4px; padding: 0px 8px; width: 290px">
                   <p style="font-weight: 500;"><%= bitcoin_address %></p>
                 </div>
-                <table>
-                  <tr>
-                    <td class="padding">
-                      <p><a href="http://grbitcoin.com/rebind/<%= token_string %>" class="btn-primary">Rebind another Bitcoin address</a></p>
-                    </td>
-                  </tr>
-                </table>
-                <p>or </p>
-                <p><a href="http://grbitcoin.com/unbind/<%= token_string %>">Unbind this Bitcoin address</a></p>
+                <br>
+                <p>You own the rights to:</p>
+                <p><a href="http://grbitcoin.com/rebind/<%= token_string %>">Rebind another Bitcoin address</a> or <a href="http://grbitcoin.com/unbind/<%= token_string %>">Unbind this Bitcoin address</a></p>
                 <p>If you did not request this you do not need to take any further action.</p>
                 <p>Thanks, have a lovely day.</p>
                 <p><a href="https://twitter.com/grbitcoincom">Follow @GrbitcoinCom on Twitter</a></p>

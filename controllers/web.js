@@ -61,7 +61,15 @@ exports.bindBitcoinAddress = function *(next) {
         connection.save = thunk(connection.save);
         connection = yield connection.save();
         connection = connection[0];
-        yield this.render('notice', { 'notice': 'Binded.' });
+        yield this.render('notice', { 'notice': 'Binded successfully.' });
+
+        var html_body = yield this.render('email-templates/bind-success-premailer', {
+          writeResp: false,
+          bitcoin_address: bitcoin_address,
+          token_string: token.token_string
+        });
+
+        emailUtils.sendEmail(token.email, 'Binded successfully', html_body);
       } else {
         yield this.render('notice', { 'notice': 'Make sure you open the url from email directly.' });
       }
@@ -131,15 +139,17 @@ exports.sendEmailIfNeeded = function *(next) {
       var html_body = yield this.render('email-templates/binded-premailer', {
         writeResp: false,
         bitcoin_address: connection.bitcoin_address,
-        token_string: token.token_string});
+        token_string: token.token_string
+      });
 
-        emailUtils.sendEmail(email, 'Request for your action', html_body);
+      emailUtils.sendEmail(email, 'Request for your action', html_body);
     } else {
       var html_body = yield this.render('email-templates/bind-premailer', {
         writeResp: false,
-        token_string: token.token_string});
+        token_string: token.token_string
+      });
 
-        emailUtils.sendEmail(email, 'Bind to your bitcoin address', html_body);
+      emailUtils.sendEmail(email, 'Bind to your bitcoin address', html_body);
     }
   }
 
