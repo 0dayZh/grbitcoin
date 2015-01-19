@@ -91,7 +91,7 @@ Connection: keep-alive
         <ol>
           <li>
             <p>Sending invalid fields will result in a <code>422 Unprocessable Entity</code> response.</p>
-            <pre><code>HTTP/1.1 422 Unprocessable Entity
+            <pre class="terminal"><code>HTTP/1.1 422 Unprocessable Entity
 Content-Length: 31
 
 {
@@ -132,27 +132,46 @@ Date: Thu, 08 Jan 2015 17:52:11 GMT</pre>
             </tr>
           </tbody>
         </table>
+        <h2>Email Hash</h2>
+        <p>All URLs on Grbitcoin are based on the use of the hashed value of an email address.To ensure a consistent and accurate hash, the following steps should be taken to create a hash:</p>
+        <p>As an example, let's start with "HelloWorld@Grbitcoin.com  " (note the trailing space which our hypothetical user entered by mistake). If we md5 encode that string directoly, we get the following (in javascript):</p>
+        <pre><code>var result = crypto.createHash('md5')
+               .update('HelloWorld@Grbitcoin.com  ')
+               .digest('hex');
+console.log(result);
+// '3a6a8af0babedcbb7a9afb92d2fb4385'</pre></code>
+        <p>Here is the right way to create a email_hash:</p>
+        <ol>
+          <li>
+            <p>Trim leading and trailing whitespace from an email address</p>
+            <pre><code>var result = 'HelloWorld@Grbitcoin.com  '.trim();
+console.log(result);
+// 'HelloWorld@Grbitcoin.com'</code></pre>
+          </li>
+          <li>
+            <p>Force all characters to lower-case</p>
+            <pre><code>var result = 'HelloWorld@Grbitcoin.com  '.trim().toLowerCase();
+console.log(result);
+// 'helloworld@grbitcoin.com'</code></pre>
+          </li>
+          <li>
+            <p>md5 hash the final string</p>
+            <pre><code>var result = crypto.createHash('md5')
+                   .update('HelloWorld@Grbitcoin.com  '.trim().toLowerCase())
+                   .digest('hex');
+console.log(result);
+// '3fd0b1611f4cea2a38f1c44a73e1a0ea'</code></pre>
+          </li>
+        </ol>
         <h2>Get a Bitcoin address</h2>
-        <pre><code>GET /bitcoins/:email</code></pre>
+        <pre><code>GET /bitcoins/:email_hash</code></pre>
         <h3>Response</h3>
         <pre class="headers"><code>Status: 200 OK</code></pre>
         <pre class="body-response"><code>{
-  "email": "helloworld@grbitcoin.com",
   "bitcoin_address": "1L4DYmpJjYRzhWADHFZ77CA4K1fzaDX82s"
 }</code></pre>
         <p>
           Note: Requests passing unbinded <code>:email</code> will return <code>404 Not Found</code>.
-        </p>
-        <h2>Get an email address</h2>
-        <pre><code>GET /emails/:bitcoin_address</code></pre>
-        <h3>Response</h3>
-        <pre class="headers"><code>Status: 200 OK</code></pre>
-        <pre class="body-response"><code>{
-  "email": "helloworld@grbitcoin.com",
-  "bitcoin_address": "1L4DYmpJjYRzhWADHFZ77CA4K1fzaDX82s"
-}</code></pre>
-        <p>
-          Note: Requests passing unbinded <code>:bitcoin_address</code> will return <code>404 Not Found</code>.
         </p>
       </div>
     </section>

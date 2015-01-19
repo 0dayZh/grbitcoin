@@ -57,7 +57,10 @@ exports.bindBitcoinAddress = function *(next) {
       var token = yield query.findOne().exec();
 
       if (token) {
-        var connection = new Connection({ email: token.email, bitcoin_address: bitcoin_address });
+        var email = token.email.trim().toLowerCase();
+        var email_hash = crypto.createHash('md5').update(email).digest('hex');
+
+        var connection = new Connection({ email: email, email_hash: email_hash, bitcoin_address: bitcoin_address });
         connection.save = thunk(connection.save);
         connection = yield connection.save();
         connection = connection[0];
@@ -112,14 +115,14 @@ exports.sendEmailIfNeeded = function *(next) {
 
     if (!token) {
       // fresh incoming email
-      var hash = crypto.createHash('md5').update(email).digest('hex');
+      var hash = crypto.createHash('md5').update(email + new Date().toString()).digest('hex');
       var newToken = new Token({ email: email, token_string: hash, expiration_date: now.add(1, 'day').toDate()});
       newToken.save = thunk(newToken.save);
       newToken = yield newToken.save();
       token = newToken[0];
     } else if (moment(token.expiration_date).diff(now) <= 0) {
       // token expirated
-      var hash = crypto.createHash('md5').update(email).digest('hex');
+      var hash = crypto.createHash('md5').update(email + new Date().toString()).digest('hex');
       token.token_string = hash;
       token.expiration_date = now.add(1, 'day').toDate();
       token.save = thunk(token.save);
