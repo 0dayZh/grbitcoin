@@ -50,7 +50,6 @@ exports.bindBitcoinAddress = function *(next) {
     var connection = yield query.findOne().exec();
 
     if (connection) {
-      console.log(connection);
       yield this.render('notice', { 'notice': 'The Bitcoin address has binded to another email. You can not bind it to more than one email, unless you unbind it first.' });
     } else {
       var token_string = this.request.body.token_string;
