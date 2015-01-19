@@ -154,7 +154,9 @@ console.log(result);
           </li>
           <li>
             <p>md5 hash the final string</p>
-            <pre><code>var result = crypto.createHash( 'HelloWorld@Grbitcoin.com  '.trim().toLowerCase() );
+            <pre><code>var result = crypto.createHash('md5')
+                   .update('HelloWorld@Grbitcoin.com  '.trim().toLowerCase())
+                   .digest('hex');
 console.log(result);
 // 'd9e9827c163abb176cddb840f637d325'</code></pre>
           </li>

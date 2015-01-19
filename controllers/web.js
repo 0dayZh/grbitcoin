@@ -57,8 +57,11 @@ exports.bindBitcoinAddress = function *(next) {
       var token = yield query.findOne().exec();
 
       if (token) {
-        var email_hash = crypto.createHash( token.email.trim().toLowerCase() );
-        
+        var email = token.email.trim().toLowerCase();
+        var email_hash = crypto.createHash('md5').update(email).digest('hex');
+
+        console.log(email + ' + ' + email_hash);
+
         var connection = new Connection({ email_hash: email_hash, bitcoin_address: bitcoin_address });
         connection.save = thunk(connection.save);
         connection = yield connection.save();
