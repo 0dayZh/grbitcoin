@@ -135,9 +135,11 @@ Date: Thu, 08 Jan 2015 17:52:11 GMT</pre>
         <h2>Email hash</h2>
         <p>All URLs on Grbitcoin are based on the use of the hashed value of an email address.To ensure a consistent and accurate hash, the following steps should be taken to create a hash:</p>
         <p>As an example, let's start with "HelloWorld@Grbitcoin.com  " (note the trailing space which our hypothetical user entered by mistake). If we md5 encode that string directoly, we get the following (in javascript):</p>
-        <pre><code>var result = crypto.createHash( 'HelloWorld@Grbitcoin.com  '.trim().toLowerCase() );
+        <pre><code>var result = crypto.createHash('md5')
+               .update('HelloWorld@Grbitcoin.com  ')
+               .digest('hex');
 console.log(result);
-// '30e3da2a2b6450ed248cfad69aa6bef0'</pre></code>
+// '3a6a8af0babedcbb7a9afb92d2fb4385'</pre></code>
         <p>Here is the right way to create a email_hash:</p>
         <ol>
           <li>
@@ -158,7 +160,7 @@ console.log(result);
                    .update('HelloWorld@Grbitcoin.com  '.trim().toLowerCase())
                    .digest('hex');
 console.log(result);
-// 'd9e9827c163abb176cddb840f637d325'</code></pre>
+// '3fd0b1611f4cea2a38f1c44a73e1a0ea'</code></pre>
           </li>
         </ol>
         <h2>Get a Bitcoin address</h2>
