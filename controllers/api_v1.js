@@ -13,8 +13,10 @@ exports.getBitcoinAddress422 = function *(next) {
 
 exports.getBitcoinAddress = function *(next) {
   var email_hash = this.params.email_hash;
+  console.log(email_hash);
   email_hash = email_hash.trim().toLowerCase();
-
+  console.log(email_hash);
+  
   var query = Connection.where({ email_hash: email_hash });
   var connection = yield query.findOne().exec();
 
